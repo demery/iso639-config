@@ -1,8 +1,8 @@
 # Iso639Config
 
-ISO-639 config is a Rail mountable engine that allows you to configure which of
-the nearly 500 [ISO 639-2][] languages to display in your application as select
-and check box options.
+ISO-639 config is a Rails mountable engine that allows you to configure which
+of the nearly 500 [ISO 639-2][] languages to display in your application as
+select and check box options.
 
 ## Installing
 
