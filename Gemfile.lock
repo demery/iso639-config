@@ -3,7 +3,7 @@ PATH
   specs:
     iso639_config (0.0.1)
       iso-639
-      rails (~> 3.1.0)
+      rails (~> 3.1)
 
 GEM
   remote: http://rubygems.org/
@@ -162,6 +162,7 @@ DEPENDENCIES
   guard-spork
   iso639_config!
   jquery-rails
+  rails (~> 3.1)
   rspec-rails
   sqlite3
   thin
