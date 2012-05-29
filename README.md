@@ -1,7 +1,8 @@
 # Iso639Config
 
-ISO-639 config is an application that allows you to configure which of the
-nearly 500 ISO 639 languages to display in your application. 
+ISO-639 config is a Rail mountable engine that allows you to configure which of
+the nearly 500 [ISO 639-2][] languages to display in your application as select
+and check box options.
 
 ## Installing
 
@@ -13,13 +14,12 @@ should work with any Rails ~3.1 version.  It has not been tested with Rails
 
 It depends on the [iso-639][] gem.
 
-The configuration page uses the jQuery JavaScript libraries to handle Ajax
-requests.
+The configuration page uses the jQuery to handle Ajax requests.
 
 ### Build and install the gem
 
 This code is not ready to publish to RubyGems.org, so for now, you'll need to
-clone the repo, build the gem, intall the gem, and add it to your `Gemfile`:
+clone the repo, build the gem, install the gem, and add it to your `Gemfile`:
 
     $ git clone git@github.com:demery/iso639-config.git
     $ cd iso639-config
@@ -59,11 +59,11 @@ application's configuration.
 
 ## How to use it
 
-Iso639Config::Lang provides two class methods for accessing last of languages
+Iso639Config::Lang provides two class methods for accessing lists of language
 codes.  They are `all_langs` and `listed`.
 
 `Iso639Config::Lang.all_langs` returns an array of Lang objects for each of the
-ISO 639.2 languages with their names and codes.
+ISO 639-2 languages with their names and codes.
 
 `Iso639Config::Lang.listed` returns a list of all languages in the
 `iso639_config_langs` table sorted by English name.
@@ -81,9 +81,9 @@ The root action of the `Iso639Config` engine provides a single page for adding
 languages to and removing them from the `iso639_config_langs` table.
 
 The simplest way to use the engine is to add a `lang_id` column or similar to
-your model and point it to to Iso639Config::Lang.  The following class shows
-how you could create a Manuscript object with one main language and multiple
-other languages:
+your model and point it to Iso639Config::Lang.  The following class shows how
+you could create a Manuscript object with one main language and multiple other
+languages:
 
 
      class Manuscript < ActiveRecord::Base
@@ -132,19 +132,25 @@ languages:
 ## Known issues, TODO tasks
 
 FIX: The current behavior of the configuration page is to **delete** records
-that the user chooses to delist.  **This is bad** because applications that link
-to database records for referencing languages will break if they reference
-records that have been delisted.  The Iso639Config::Lang class has a boolean
-`display` attribute that should be set to false for delisting, instead of
-deletion.  The change will require a change the `LangsController#create` action
-to either create or "re-list" languages.  Also, the method `Lang.listed` should
-be changed to return only those languages where `display` is `true`.
+that the user chooses to delist.  **This is bad** because applications that use
+associations to the `iso639_config_langs` table will break when associated
+langs are delisted and deleted from that table.  The Iso639Config::Lang class
+has a boolean `display` attribute that should be set to false for delisting,
+in place of deleting the record.  The change will require a change the
+`LangsController#create` action to either create or "re-list" languages.  Also,
+the method `Lang.listed` should be changed to return only those languages where
+`display` is `true`.
 
 FIX: Add internationalization.
 
+FIX?: Should code `zxx` for 'No linguistic content; Not applicable' always be
+listed by default?  The reason for doing this is that most users will not know
+that this is an option and may have need to use it.  It's easier for users to
+delist the value, than to add it when they don't know it exists.
+
 ## Why ISO 639 Config?
 
-I write a lot of applications that use ISO 639.2 bibliographic codes for
+I write a lot of applications that use ISO 639-2 bibliographic codes for
 identifying languages in manuscripts and other texts for [TEI][] manuscript
 description.  For example,
 
@@ -156,7 +162,7 @@ description.  For example,
      <!-- ... -->
 
 Typically a group of manuscripts will only involve a small number of the
-several hundred languages available in the ISO 639.2 list.  Users need to be
+several hundred languages available in the ISO 639-2 list.  Users need to be
 able to configure application selection lists to show only the languages 
 needed for the application.
 
@@ -166,3 +172,4 @@ do a lot of things well. I hope to improve it as time goes on.
 
 [TEI]: http://www.tei-c.org/index.xml "Text Encoding Initiative"
 [iso-639]: http://rubygems.org/gems/iso-639 "ISO-639 gem at RubyGems.org"
+[ISO 639-2]: http://www.loc.gov/standards/iso639-2/php/code_list.php "Library of Congress ISO 639-2 page"
