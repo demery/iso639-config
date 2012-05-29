@@ -1,0 +1,36 @@
+<%= form_for(@manuscript) do |f| %>
+  <% if @manuscript.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manuscript.errors.count, "error") %> prohibited this manuscript from being saved:</h2>
+
+      <ul>
+      <% @manuscript.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :main_lang_id, "Main language" %><br />
+    <%= f.select :main_lang_id, Iso639Config::Lang.listed.map { |l| [ l.name, l.id ] }, { include_blank: true } %>
+  </div>
+
+  
+  <div class="field">
+    <%= hidden_field_tag "manuscript[lang_ids][]", nil %>
+    <% Iso639Config::Lang.listed.each do |lang| -%>
+      <%= check_box_tag "manuscript[lang_ids][]",  lang.id, @manuscript.lang_ids.include?(lang.id), id: dom_id(lang) %>
+      <%= label_tag dom_id(lang), lang.name %><br />
+    <% end -%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

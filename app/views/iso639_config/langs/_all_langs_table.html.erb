@@ -1,0 +1,24 @@
+<table class="lang">
+  <tr>
+    <th class="name">Name</th>    
+    <th class="code">Bib code</th>
+    <th class="code">Term code</th>
+    <th class="code">639.1</th>
+    <th class="action"></th>
+  </tr>
+  <% langs.each do |lang| %>
+    <tr class="<%= cycle('table-row-odd', 'table-row-even') %>">
+      <td><%= h lang.name %></td>    
+      <td><%= h lang.alpha3 %></td>
+      <td><%= h lang.alpha3_terminologic %></td>
+      <td><%= h lang.alpha2 %></td>
+      <td id="lang-<%= lang.alpha3 %>"> 
+        <% if lang.display? -%>
+          Listed
+        <% else -%>
+          <%= render "add_to_list_form", lang: lang %>
+        <% end -%>
+      </td>
+    </tr>
+  <% end %>
+</table>

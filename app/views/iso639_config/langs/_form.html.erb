@@ -1,0 +1,29 @@
+<%= form_for(@lang) do |f| %>
+  <% if @lang.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lang.errors.count, "error") %> prohibited this lang from being saved:</h2>
+
+      <ul>
+      <% @lang.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bib_code %><br />
+    <%= f.text_field :bib_code %>
+  </div>
+  <div class="field">
+    <%= f.label :display %><br />
+    <%= f.check_box :display %>
+  </div>
+  <div class="field">
+    <%= f.label :script_direction %><br />
+    <%= f.text_field :script_direction %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

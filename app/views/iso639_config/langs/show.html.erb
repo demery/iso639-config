@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Bib code:</b>
+  <%= @lang.bib_code %>
+</p>
+
+<p>
+  <b>Display:</b>
+  <%= @lang.display %>
+</p>
+
+<p>
+  <b>Script direction:</b>
+  <%= @lang.script_direction %>
+</p>
+
+
+<%= link_to 'Edit', edit_lang_path(@lang) %> |
+<%= link_to 'Back', langs_path %>

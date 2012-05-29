@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @manuscript.name %>
+</p>
+
+<p>
+  <b>Main lang:</b>
+  <%= @manuscript.main_lang_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_manuscript_path(@manuscript) %> |
+<%= link_to 'Back', manuscripts_path %>

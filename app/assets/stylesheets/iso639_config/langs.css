@@ -1,0 +1,43 @@
+body {
+  font-family: sans-serif;
+}
+
+tr.table-row-odd td {
+  background-color: #ccc;
+}
+
+div#iso639-container {
+}
+div#iso639-top {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  height: 400px;
+  overflow: scroll;
+  background-color: white;
+}
+
+div#iso639-middle {
+  position: fixed;
+  top: 400px;
+  height: 30px;
+}
+div#iso639-bottom {
+  position: fixed;
+  top: 440px;
+  bottom: 0;
+  height: 400px;
+  overflow: scroll;
+
+}
+
+table.lang { }
+
+table.lang th.name { width: 400px; }
+table.lang th.code { width: 60px; }
+table.lang th.bib-code { width: 60px; }
+table.lang th.term-code { width: 60px; }
+table.lang th.alpha2 { width: 60px; }
+table.lang th.display { width: 60px; }
+table.lang th.action { width: 60px; }
+table.lang th.script-direction { width: 60px; }

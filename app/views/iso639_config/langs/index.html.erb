@@ -1,0 +1,20 @@
+<div id="iso639-container">  
+  <div id="iso639-top">
+
+    <h1>Languages</h1>
+
+    <h3>Listed lanuages</h3>
+    <div id="listed-langs">
+      <%= render "langs_table", langs: @langs %>
+    </div>
+    <hr />
+  </div>
+  <div id="iso639-middle">
+    <h3>Available languages</h3>
+  </div>
+  <div id="iso639-bottom">
+    <div id="all-langs">
+      <%= render "all_langs_table", langs: @all_langs %>
+    </div>
+  </div>
+</div>
