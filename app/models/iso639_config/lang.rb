@@ -22,7 +22,7 @@ module Iso639Config
     # class methods
     #----------------------------------------
     def self.listed
-      Lang.all.sort_by { |l| l.name }
+      Lang.where([ "display = ?", true]).sort_by { |l| l.name }
     end # def self.listed
 
     def self.all_langs
