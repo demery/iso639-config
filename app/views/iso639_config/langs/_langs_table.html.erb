@@ -14,7 +14,9 @@
     <td><%= h lang.alpha3_terminologic %></td>
     <td><%= h lang.alpha2 %></td>
     <td>
-      <%= button_to 'Delist', lang_path(lang), method: :delete, remote: true, confirm: "Are you sure you want to delete #{lang.name}?" %>
+      <%= form_for lang, remote: true do |f| %>
+        <%= f.submit "Delist" %>
+      <% end -%>
     </td>
   </tr>
 <% end %>
