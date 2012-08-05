@@ -63,11 +63,16 @@ module Iso639Config
     # PUT /langs/1.json
     def update
       @lang = Lang.find(params[:id])
+      @lang.display = !@lang.display?
   
       respond_to do |format|
         if @lang.update_attributes(params[:lang])
           format.html { redirect_to @lang, notice: 'Lang was successfully updated.' }
           format.json { head :ok }
+          format.js { 
+            @langs = Lang.listed
+            render action: 'index'
+          }
         else
           format.html { render action: "edit" }
           format.json { render json: @lang.errors, status: :unprocessable_entity }
