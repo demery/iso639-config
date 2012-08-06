@@ -66,7 +66,8 @@ codes.  They are `all_langs` and `listed`.
 ISO 639-2 languages with their names and codes.
 
 `Iso639Config::Lang.listed` returns a list of all languages in the
-`iso639_config_langs` table sorted by English name.
+`iso639_config_langs` table where the `display` attribute is `true`, sorted by
+English name.
 
 Each Iso639Config::Lang instance is backed by the appropriate `ISO_639`
 object and has convenience methods for accessing the `ISO_639` properties:
@@ -78,7 +79,14 @@ object and has convenience methods for accessing the `ISO_639` properties:
 * `french_name`
 
 The root action of the `Iso639Config` engine provides a single page for adding
-languages to and removing them from the `iso639_config_langs` table.
+languages to and removing them from the list of languages to display on web
+pages. If a language has not been 'listed' before, clicking 'Add to list'
+creates a new record in the `iso639_config_langs` table, with `display` set to
+`true`. Subsequent removals or additions to the displayable language list
+toggle the `display` attribute. That is, **'delisted' languages are not deleted
+from the database**. This means that you can have a language in the selection
+list, connect another record to that language, remove the language from display
+lists, and still have a valid connection between the two records.
 
 The simplest way to use the engine is to add a `lang_id` column or similar to
 your model and point it to Iso639Config::Lang.  The following class shows how
