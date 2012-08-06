@@ -1,7 +1,6 @@
 $('#listed-langs').html("<%= j render('langs_table', langs: @langs) %>")
-<% if !@deleted_lang.blank? -%>
-  <% lang = Iso639Config::Lang.new(bib_code: @deleted_lang) -%>
-  $('#lang-<%= @lang.alpha3 %>').html("<%= j render('add_to_list_form', lang: lang) %>")
-<% else -%>
+<% if @lang.display? -%>
   $('#lang-<%= @lang.alpha3 %>').html("Listed")
+<% else -%>
+  $('#lang-<%= @lang.alpha3 %>').html("<%= j render('add_to_list_form', lang: @lang) %>")
 <% end -%>
