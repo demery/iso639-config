@@ -131,16 +131,6 @@ languages:
 
 ## Known issues, TODO tasks
 
-FIX: The current behavior of the configuration page is to **delete** records
-that the user chooses to delist.  **This is bad** because applications that use
-associations to the `iso639_config_langs` table will break when associated
-langs are delisted and deleted from that table.  The Iso639Config::Lang class
-has a boolean `display` attribute that should be set to false for delisting,
-in place of deleting the record.  The change will require a change the
-`LangsController#create` action to either create or "re-list" languages.  Also,
-the method `Lang.listed` should be changed to return only those languages where
-`display` is `true`.
-
 FIX: Add internationalization.
 
 FIX?: Should code `zxx` for 'No linguistic content; Not applicable' always be
@@ -170,7 +160,7 @@ This project is my first attempt at a Mountable Engine, and I'm sure does not
 do a lot of things well. I hope to improve it as time goes on.
 
 
-[alphetum]: https://github.com/alphabetum "alphetum at github.com"
+[alphetum]: https://github.com/alphabetum "https://github.com/alphabetum"
 [iso-639]: http://rubygems.org/gems/iso-639 "ISO-639 gem at RubyGems.org"
 [ISO 639-2]: http://www.loc.gov/standards/iso639-2/php/code_list.php "Library of Congress ISO 639-2 page"
 [TEI]: http://www.tei-c.org/index.xml "Text Encoding Initiative"
