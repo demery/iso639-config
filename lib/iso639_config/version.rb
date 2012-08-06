@@ -1,3 +1,3 @@
 module Iso639Config
-  VERSION = "0.0.1"
+  VERSION = "0.1.0"
 end
