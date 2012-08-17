@@ -1,5 +1,2 @@
-module Iso639Config
-  class ApplicationController < ActionController::Base
-    layout 'application'
-  end
+class Iso639Config::ApplicationController < ApplicationController
 end
