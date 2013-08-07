@@ -6,3 +6,4 @@ spec/dummy/log/*.log
 spec/dummy/tmp/
 iso639_config-0.0.1.gem
 *.bak
+.ruby-version
