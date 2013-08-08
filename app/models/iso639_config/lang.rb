@@ -3,6 +3,7 @@ require 'iso-639'
 
 module Iso639Config
   class Lang < ActiveRecord::Base
+    set_primary_key :bib_code
     attr_accessible :bib_code, :display, :script_direction
 
     attr_reader :iso_639
