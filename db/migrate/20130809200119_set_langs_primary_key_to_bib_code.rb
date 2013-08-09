@@ -1,6 +1,7 @@
 class SetLangsPrimaryKeyToBibCode < ActiveRecord::Migration
   def up
     execute "ALTER TABLE iso639_config_langs DROP CONSTRAINT iso639_config_langs_pkey;"
+    change_column :iso639_config_langs, :id, null: true
     execute "ALTER TABLE iso639_config_langs ADD PRIMARY KEY (bib_code);"
   end
 
